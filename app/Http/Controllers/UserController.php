@@ -79,6 +79,5 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($id);
         $user->update($validateData);
-        return view('user.profil',['user'=>$user]);
-    }
+return redirect('/users');    }
 }

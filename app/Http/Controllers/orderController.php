@@ -10,17 +10,14 @@ use Illuminate\Http\Request;
 class orderController extends Controller
 {
     public function index(){
-
         $user = Order::where('users_id', auth()->user()->id)->get();
         return view('order.order',['user'=>$user]);
         //  $order = Order::with(['status'])->get();
         // return view('admin.lihat_order',['order'=>$order]);
-
     }
     public function nambah(){
         $produk = Produk::get();
                 return view('order.addorder',['produk'=>  $produk]);
-
     }
     public function makanan(Request $request)
     {
@@ -42,18 +39,9 @@ class orderController extends Controller
         return redirect('/order');
         }
     }
+    public function cetak($id)
+        {
+            $order = Order::with('gege')->findOrFail($id);
+            return view('order.cetak_order',['order'=>$order]);
+        }
 }
-
-// // return $request->file('image_produk')->store('store');
-// $validateData = $request->validate([
-//     'nama_produk' => 'required',
-//     'harga_produk' => 'required',
-//     'deskripsi' => 'required',
-//     'image_produk' => 'image|file|max:5000',
-// ]);
-// if ($request->file('image_produk')) {
-//     $validateData['image_produk'] = $request->file('image_produk')->store('produk');
-// }
-// $validateData['user_id'] = auth()->user()->id;
-// Produk::create($validateData);
-// return redirect('/kelola_produk');

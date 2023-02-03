@@ -11,6 +11,5 @@ class homeController extends Controller
     public function card(){
         $produk = Produk::get();
         return view('home',['produk'=>  $produk]);
-
     }
 }

@@ -14,6 +14,7 @@
             <th>Deskripsi Pembayaran</th>
             <th>Bukti transaksi/Foto Rumah</th>
             <th>Status Konfirmasi Order</th>
+            <th>Cetak</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +31,8 @@
                 <td>{{$u->deskripsi_order}}</td>
                 <td><img src="{{asset('storage/'. $u->image)}}" alt="" width="100" height="100"></td>
                 <td>{{$u->status}}</td>
+                <td><a class="btn btn-danger" href="order/detail/{{ $u->id }}">Cetak </a>
+            </td>
               </tr>
             @endforeach
         </tbody>

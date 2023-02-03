@@ -27,13 +27,12 @@ use App\Models\User;
 //user
 route::get('/home',[homeController::class,'card']);
 route::get('/',[homeController::class,'card']);
+//order-info
 route::get('/order',[orderController::class,'index'])->middleware('auth');
+route::get('/order/detail/{id}',[orderController::class,'cetak'])->middleware('auth');
+
 route::get('/addorder',[orderController::class,'nambah'])->middleware('auth');
 route::post('/addorder/store',[orderController::class,'makanan'])->middleware('auth');
-
-//edit
-route::get('/profil/edit/{id}',[UserController::class,'viewnya'])->middleware('auth');
-route::put('/profil/edit/{id}',[UserController::class,'ubah'])->middleware('auth');
 
 // register
 route::get('/register',[UserController::class,'index']);
@@ -46,7 +45,10 @@ route::get('/logout',[UserController::class,'logout'])->middleware('auth');
 
 //lihat
 route::get('/users',[datauserController::class,'data'])->middleware('auth');
-route::get('/user/{id}',[datauserController::class,'show'])->middleware('auth');
+
+//edit
+route::get('/profil/edit/{id}',[UserController::class,'viewnya'])->middleware('auth');
+route::put('/profil/edit/{id}',[UserController::class,'ubah'])->middleware('auth');
 
 //dashboard
 route::get('/tambah_produk',[ProdukController::class,'index'])->middleware(['auth','admin']);

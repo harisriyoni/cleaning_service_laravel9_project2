@@ -16,5 +16,9 @@ class Order extends Model
     public function gugu(){
         return $this->hasMany(Produk::class,'order_id','id');
     }
+    public function gege()
+    {
+        return $this->belongsTo(User::class,'users_id','id');
+    }
 
 }
